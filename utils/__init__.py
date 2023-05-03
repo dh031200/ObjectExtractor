@@ -20,6 +20,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Process some integers.')
     parser.add_argument('--source', default='https://youtu.be/Zgi9g1ksQHc', help='source')
     parser.add_argument('--model', default='yolov8n.pt', help='model')
+    parser.add_argument('--appeared', default=100, type=int, help='capture threshold')
     parser.add_argument('--show', action='store_true', help='display results')
     parser.add_argument('--save-vid', action='store_true', help='save results video')
     parser.add_argument('--verbose', action='store_true', help='print verbose')
