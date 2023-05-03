@@ -1,4 +1,5 @@
 ## Object Extractor
+Extract objects that have been tracked for more than `threshold` frames.
 
 ### Installation
 
