@@ -1,0 +1,34 @@
+# interpreter bytecode
+.vscode/
+.idea/
+__pycache__/
+
+# results
+runs/
+vids/
+weights/
+logs/
+packages/
+
+# data
+*.mp4
+*.pt
+*.pyc
+
+# models
+models/
+
+# tokens
+.TOKEN
+
+# zip files
+*.zip
+
+# exports
+*_openvino_model
+*.torchscript
+*.onnx
+*.engine
+
+# interactive plots
+*.html
