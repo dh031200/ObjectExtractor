@@ -57,10 +57,10 @@ def track(model, source=None, stream=False, **kwargs):
     return model.predict(source=source, stream=stream, **kwargs)
 
 
-def capture(tracker):
+def capture(tracker, appeared=100):
     capture_objects = []
     for strack in tracker.tracked_stracks:
-        if (tracker.frame_id - strack.start_frame > 100) and (strack.track_id not in tracker.captured_id):
+        if (tracker.frame_id - strack.start_frame > appeared) and (strack.track_id not in tracker.captured_id):
             capture_objects.append([strack.track_id, strack.cls, strack.tlbr])
             strack.captured_frame = tracker.frame_id
             tracker.captured_id.append(strack.track_id)

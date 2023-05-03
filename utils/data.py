@@ -12,6 +12,7 @@ class Data:
         self.src = args.source
         self.show = args.show
         self.save_vid = args.save_vid
+        self.appeared = args.appeared
 
         self.tracker = None
         self.classes = None
@@ -63,7 +64,7 @@ class Data:
                 show_vid(output)
             if self.save_vid:
                 self.write(output)
-        save_track(self.tracker, detect.orig_img, self.img_save_dir, self.classes)
+        save_track(self.tracker, detect.orig_img, self.img_save_dir, self.classes, self.appeared)
 
     def parse_detect_results(self):
         captured_list = []
@@ -87,7 +88,8 @@ class Data:
             json.dump(dict(video_name=self.name, capture=self.capture), f, indent=4, ensure_ascii=False)
 
     def release(self):
-        self.writer.release()
+        if self.writer is not None and self.writer.isOpened():
+            self.writer.release()
 
 
 def save_img(path, img):
@@ -100,11 +102,13 @@ def show_vid(img):
     cv2.waitKey(1)
 
 
-def save_track(tracker, img, path, names):
-    capture_objects = capture(tracker)
+def save_track(tracker, img, path, names, appeared):
+    h, w, _ = img.shape
+    capture_objects = capture(tracker, appeared)
     if capture_objects:
         for tid, cls, obj in capture_objects:
-            l, t, r, b = map(int, obj)
+            l, r = map(int, obj[[0, 2]].clip(0, w))
+            t, b = map(int, obj[[1, 3]].clip(0, h))
             save_img(f'{path}/{str(tid).zfill(4)}_{names[int(cls)]}.png', img[t:b, l:r])
 
 

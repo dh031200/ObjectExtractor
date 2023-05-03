@@ -30,7 +30,8 @@ class Model:
         self.data.img_save_dir.mkdir(parents=True, exist_ok=True)
 
     def track(self):
-        detect = track(model=self.detector, source=self.data.src, verbose=self.verbose, tracker="botsort.yaml", stream=True,
+        detect = track(model=self.detector, source=self.data.src, verbose=self.verbose, tracker="botsort.yaml",
+                       stream=True,
                        project='runs')
         self.model_init(self.detector, detect)
         self.set_dir()
