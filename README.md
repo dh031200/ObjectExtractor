@@ -28,23 +28,23 @@ python track.py --source sample.mp4 --model yolov8n.pt --appeared 100 --save-vid
 #### Default
 * conf: 0.25   
   └ confidence score threshold
-* iou: 0.7
+* iou: 0.7   
   └ intersection over union threshold
-* half: False
+* half: False   
   └ enable half precision (FP16)
-* device:
+* device:   
   └ set gpu devices for inference
-* save_dir: 'runs'
+* save_dir: 'runs'   
   └ set save directory
-* show_conf: True
+* show_conf: True   
   └ Whether to show confidence score in labels
-* show_labels: False
+* show_labels: False    
   └ Whether to show labels
-* show_boxes: True
+* show_boxes: True   
   └ Whether to show bounding boxes
-* line_width: 0.0
+* line_width: 0.0   
   └ the line width of the bounding boxes.
-* classes:
+* classes:   
   └ filter results by class, i.e. class=0, or class=[0,2,3]
 
 ### Results
