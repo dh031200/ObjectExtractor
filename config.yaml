@@ -1,0 +1,10 @@
+conf: 0.25
+iou: 0.7
+half: False
+device:
+save_dir: 'runs'
+show_conf: True
+show_labels: False
+show_boxes: True
+line_width: 0.0
+classes:
